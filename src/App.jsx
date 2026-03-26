@@ -1,33 +1,40 @@
+import { useState } from "react";
 import "./App.css";
 
-// 3. import useState from react
+
 
 
 function App() {
   // 4. Create useState variables for mood called mood and setMood, make the default "Tired"
+  const [mood, setMood] = useState("Tired");
 
 
 
   // 5. Create useState variables for energy called energy and setEnergy, make the default 3
+  const [energy, setEnergy] = useState(3);
 
 
 
   // 6. Create useState variables for school mode called schoolMode and setSchoolMode, make the default true
-
+  const [schoolMood, setSchoolMode] = useState(true);
 
   // 7. Create a function called handleHappy
   // When the function runs:
   // - change mood to "Happy"
   // - show an alert about your mood improving
-
-
+  function handleHappy(){
+    alert("your mood is improving!")
+    setMood("Happy")
+  }
 
   // 8. Create a function called handleEnergyUp
   // When the function runs:
   // - increase energy by 1
   // - show an alert about your energy rising
-
-
+  function handleEnergyUp(){
+    alert("your energy is rising!")
+    setEnergy(energy +1)
+  }
 
   // 9. Create a function called handleReset
   // When the function runs:
@@ -36,12 +43,19 @@ function App() {
   // - reset schoolMode back to true
   // - show an alert that everything has been reset
 
-
+ function handleReset(){
+    setMood(0)
+    setSchoolMode(0)
+     setEnergy(0)
+  }
 
   // 10. Create a function called handleSchoolMode
   // When the function runs:
   // - switch schoolMode between true and false
+function handleSchoolMode(){
+setSchoolMode(!schoolMode)
 
+}
 
 
   return (
@@ -61,6 +75,10 @@ function App() {
               className="btn"
               // 11. Connect this button to handleHappy using onClick
             >
+            <button
+                className="tracker-box"
+                onClick = {handleHappy}
+                >
               Change Mood to Happy 🙂
             </button>
 
@@ -95,11 +113,16 @@ function App() {
           className="btn secondary"
           // 16. Connect this button to handleSchoolMode using onClick
         >
-          Toggle School Mode
+
+           <button
+                className="btn secondary"
+                onClick = {handleSchoolMode}
+                >
+         Toggle School Mode
         </button>
 
-        {/* 17. Add this after the colon: schoolMode ? "School Mode: ON" : "School Mode: OFF" */}
-        <p className="mode">Current Mode: </p>
+        {/* 17. Add this after the colon:  */}
+        <p className="mode">Current Mode: {schoolMode ? "School Mode: ON" : "School Mode: OFF"}</p>
 
         {/* 18. Submit! (git add . git commit -m 'done' git push) */}
       </section>
